@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
+#PARA EL EXAMEN git add . git commit -m "Probar que funciona" git push
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+var muerto = false
 
 
 func _physics_process(delta: float) -> void:
@@ -23,3 +25,13 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+func morir():
+	if muerto:
+		return
+			
+	muerto = true
+		
+	print("HAS MUERTO")
+	
+	get_tree().quit()

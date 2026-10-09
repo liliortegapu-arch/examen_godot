@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://b2hcp5nsyutp2"]
+
+[ext_resource type="PackedScene" uid="uid://cywv3i3vs401" path="res://personaje.tscn" id="1_865ah"]
+[ext_resource type="Texture2D" uid="uid://bfewmtp1uwsfx" path="res://icon.svg" id="2_ugwex"]
+[ext_resource type="Script" uid="uid://ccly6hksdlr2c" path="res://enemigo.gd" id="3_sks45"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfkbx"]
+size = Vector2(1014, 98)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aui74"]
+size = Vector2(124, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vicex"]
+size = Vector2(56, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77to7"]
+size = Vector2(124, 37)
+
+[node name="escena" type="Node2D" unique_id=24936813]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1885057414]
+position = Vector2(307, -61)
+
+[node name="personaje" parent="." unique_id=1025253428 instance=ExtResource("1_865ah")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=813887001]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=904609196]
+position = Vector2(315, 131)
+shape = SubResource("RectangleShape2D_lfkbx")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=470921913]
+position = Vector2(313.50003, 129.5)
+scale = Vector2(7.960938, 0.8046875)
+texture = ExtResource("2_ugwex")
+
+[node name="enemigo" type="CharacterBody2D" parent="." unique_id=846036127]
+script = ExtResource("3_sks45")
+
+[node name="Sprite2D" type="Sprite2D" parent="enemigo" unique_id=1935067702]
+position = Vector2(339, 14)
+scale = Vector2(0.953125, 0.40625)
+texture = ExtResource("2_ugwex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemigo" unique_id=541417911]
+position = Vector2(337, 14.5)
+shape = SubResource("RectangleShape2D_aui74")
+
+[node name="RayCastIzquierda2D" type="RayCast2D" parent="enemigo" unique_id=1447990757]
+position = Vector2(275, 17)
+target_position = Vector2(-77, 1)
+
+[node name="Area2D" type="Area2D" parent="enemigo" unique_id=1252653285]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemigo/Area2D" unique_id=1215570236]
+position = Vector2(245, 13)
+shape = SubResource("RectangleShape2D_vicex")
+
+[node name="Area2D2" type="Area2D" parent="enemigo" unique_id=17709859]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemigo/Area2D2" unique_id=1458337567]
+position = Vector2(338, -30)
+shape = SubResource("RectangleShape2D_77to7")
+
+[connection signal="body_entered" from="enemigo/Area2D" to="enemigo" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="enemigo/Area2D2" to="enemigo" method="_on_area_2d_2_body_entered"]

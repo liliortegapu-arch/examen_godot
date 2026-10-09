@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cywv3i3vs401"]
 
-[ext_resource type="Script" uid="uid://b8lsgygxge5f2" path="res://character_body_2d.gd" id="1_mt5rx"]
+[ext_resource type="Script" uid="uid://b8lsgygxge5f2" path="res://personaje.gd" id="1_mt5rx"]
 [ext_resource type="Texture2D" uid="uid://bfewmtp1uwsfx" path="res://icon.svg" id="2_rcdd3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lfkbx"]
@@ -8,12 +8,12 @@ size = Vector2(122, 119)
 
 [node name="Node2D" type="Node2D" unique_id=1025253428]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1497465127]
+[node name="personaje" type="CharacterBody2D" parent="." unique_id=1497465127]
 script = ExtResource("1_mt5rx")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1117383733]
+[node name="Sprite2D" type="Sprite2D" parent="personaje" unique_id=1117383733]
 texture = ExtResource("2_rcdd3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=836056979]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="personaje" unique_id=836056979]
 position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_lfkbx")
